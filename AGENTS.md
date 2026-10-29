@@ -1,8 +1,8 @@
 # AGENTS.md — Reglas del agente en este proyecto
 
 > **Plantilla.** Este archivo se copia a la raíz de un proyecto real.
-> En la carpeta del kit no hay proyecto activo: aquí no se ejecuta el protocolo
-> ni se crean artefactos. Ver `EMPIEZA-AQUI.md`.
+> Si lo estás leyendo dentro de la carpeta del kit (no en un proyecto), ignora el protocolo:
+> no hay proyecto activo. Ver `EMPIEZA-AQUI.md`.
 
 ## Rol
 

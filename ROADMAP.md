@@ -3,7 +3,11 @@
 > Este roadmap es **del kit**, no de los proyectos que lo usan.
 > Cada proyecto tiene su propio `docs/harness/templates/ROADMAP.md`.
 
-## v1.4 — Validación en un proyecto real
+## Completado
+
+- v1.4 — Instalación en un comando y onboarding en 3 pasos.
+
+## v1.5 — Validación en un proyecto real
 
 - [ ] Probar el harness de punta a punta en un proyecto nuevo (G0 → G6).
 - [ ] Escribir la primera skill real: `scaffold-web-app`, y validarla en limpio.
@@ -11,9 +15,9 @@
 - [ ] Ajustar el banco de preguntas según la fricción observada.
 - [ ] Documentar un caso de estudio con decisiones y supuestos reales.
 
-## v1.5 — Automatización
+## v1.6 — Automatización
 
-- [ ] Instalador multiplataforma (PowerShell + bash).
+- [ ] Instalador con verificación de integridad (checksum) y modo desatendido.
 - [ ] Script `check-gate` que valide el checklist pre-código.
 - [ ] Plantilla de ADR y de threat model.
 - [ ] Ejemplo completo de `SPEC`, `DATA-MODEL` y `DESIGN-SYSTEM` para un dominio real.

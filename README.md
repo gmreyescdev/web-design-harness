@@ -23,6 +23,7 @@ artefactos persistidos en archivos y verificación por comandos.
 | `QUESTION-BANK.md` | 6 rondas de preguntas con defaults recomendados. |
 | `CHANGELOG.md` | Historial de versiones del harness. |
 | `ROADMAP.md` | Próximas versiones del kit y cómo contribuir. |
+| `install.ps1` / `install.sh` | Instaladores de un comando para Windows y Unix. |
 | `templates/` | Artefactos a completar (SPEC, datos, diseño, arquitectura, aceptación, roadmap). |
 | `skills/` | Plantilla y skills reutilizables (OpenCode: `.opencode/skills/`). |
 | `state/PROJECT-STATE.md` | Tablero vivo: fase, decisiones, supuestos, pendientes, próximo paso. |
@@ -45,27 +46,31 @@ y se registra como deuda de diseño.
 
 ---
 
-## Uso rápido
+## Empieza en 3 pasos
 
-1. Copia `AGENTS.md` a la raíz del proyecto nuevo.
-2. Copia `templates/`, `state/` y `checklists/` a `docs/harness/` del proyecto.
-3. Abre la sesión del agente en el proyecto y pega el prompt **Arranque** de `KICKOFF.md`.
-4. Responde **una ronda por mensaje**. El agente escribe el artefacto y te muestra un resumen.
-5. Da OK o corrige. Al llegar a G5, recién ahí se construye.
+### 1. Instalar
+
+```powershell
+irm https://raw.githubusercontent.com/gmreyescdev/web-design-harness/main/install.ps1 | iex
+```
+
+Te pregunta la carpeta del proyecto y, si no existe, la crea.
+En macOS/Linux: cloná el repo y ejecutá `bash install.sh /ruta/a/tu-proyecto`.
+
+### 2. Abrir OpenCode en esa carpeta
+
+### 3. Pegar este mensaje
+
+```text
+Inicia el Web Design Harness en modo Express. Hazme la Ronda 1.
+```
+
+Respondé 5 preguntas. No se escribe código hasta aprobar el gate pre-código.
 
 > Regla de oro: **cada respuesta termina en un archivo, no en el chat.**
 > Si una decisión no está en `PROJECT-STATE.md` o en un artefacto, no existe.
 
----
-
-## Instalación
-
-```bash
-git clone https://github.com/<tu-usuario>/web-design-harness.git
-```
-
-Después copiá el kit a tu proyecto: `AGENTS.md` a la raíz y el resto a `docs/harness/`.
-El comando completo para PowerShell está en `EMPIEZA-AQUI.md`.
+> ¿Preferís el detalle? Ver `EMPIEZA-AQUI.md` y `KICKOFF.md`.
 
 ---
 

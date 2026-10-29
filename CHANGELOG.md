@@ -3,6 +3,20 @@
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es/1.1.0/).
 Versionado semántico.
 
+## [1.4] — 2026-10-29
+
+### Añadido
+
+- `install.ps1`: instalador de un comando para Windows, con descarga automática del kit.
+- `install.sh`: instalador para macOS y Linux.
+- Instalación en 3 pasos en `EMPIEZA-AQUI.md` y `README.md`.
+- Guía de problemas frecuentes para quien empieza desde cero.
+
+### Cambiado
+
+- El onboarding ya no requiere copiar archivos a mano.
+- El mensaje de arranque se redujo a una línea.
+
 ## [1.3] — 2026-10-29
 
 ### Añadido

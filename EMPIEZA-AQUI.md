@@ -1,75 +1,88 @@
 # EMPIEZA AQUÍ
 
-Este workspace contiene **solo el harness**: un kit de diseño reutilizable.
-**No hay proyecto creado ni código.** Es la plantilla que se copia a cada proyecto nuevo.
+> **Si es tu primera vez, leé solo esta página.** Son 3 pasos.
 
 ---
 
-## Contenido
+## Paso 1 — Instalar
 
-```
-Harness DeepSeek v4.q flash 1017/
-├── AGENTS.md              ← reglas del agente (se copia a la raíz del proyecto)
-├── HARNESS.md             ← protocolo: 6 gates y mecánica de preguntas
-├── MODEL-NOTES.md         ← calibración para modelos rápidos
-├── SUBAGENTS.md           ← cuándo delegar, brief, ownership y revisión
-├── COST.md                ← economía de tokens: caché, recortes, presupuesto
-├── SKILLS.md              ← política de skills: registro, ciclo de vida, prueba
-├── QUESTION-BANK.md       ← 6 rondas, ~33 preguntas con defaults
-├── KICKOFF.md             ← 10 prompts listos para copiar
-├── README.md              ← visión general del kit
-├── templates/             ← SPEC, DATA-MODEL, DESIGN-SYSTEM, ARCHITECTURE, ACCEPTANCE, ROADMAP
-├── skills/                ← plantilla y skills (OpenCode: .opencode/skills/)
-├── state/                 ← PROJECT-STATE (tablero vivo)
-├── checklists/            ← GATE-PRE-CODE y DOD-SLICE
-└── EMPIEZA-AQUI.md        ← este archivo
-```
-
----
-
-## Cómo usarlo en un proyecto nuevo
-
-1. Creá o abrí la carpeta del proyecto.
-2. Copiá `AGENTS.md` a la **raíz** del proyecto.
-3. Copiá el resto a `<proyecto>/docs/harness/`.
-4. Abrí la sesión del agente en la raíz del proyecto.
-5. Pegá el prompt **1. Arranque** de `docs/harness/KICKOFF.md`.
-6. Respondé la Ronda 1. No se escribe código hasta el gate G5.
-
-### Instalación en un comando (PowerShell)
+Abrí PowerShell y pegá esta línea:
 
 ```powershell
-$kit  = 'C:\ruta\donde\clonaste\web-design-harness'
-$proj = 'C:\ruta\a\tu-proyecto'
+irm https://raw.githubusercontent.com/gmreyescdev/web-design-harness/main/install.ps1 | iex
+```
 
-New-Item -ItemType Directory -Path "$proj\docs\harness" -Force | Out-Null
-Copy-Item -LiteralPath "$kit\AGENTS.md" -Destination "$proj\AGENTS.md" -Force
+Te va a preguntar la carpeta de tu proyecto. Si no existe, la crea.
+El instalador copia el harness y deja todo listo.
 
-'README.md','HARNESS.md','MODEL-NOTES.md','SUBAGENTS.md','COST.md','SKILLS.md','KICKOFF.md','QUESTION-BANK.md' |
-  ForEach-Object { Copy-Item -LiteralPath "$kit\$_" -Destination "$proj\docs\harness\" -Force }
+> Si preferís revisar el script antes de ejecutarlo: cloná el repo y corré `.\install.ps1`.
 
-Copy-Item -LiteralPath "$kit\templates" -Destination "$proj\docs\harness\templates" -Recurse -Force
-Copy-Item -LiteralPath "$kit\state"     -Destination "$proj\docs\harness\state"     -Recurse -Force
-Copy-Item -LiteralPath "$kit\checklists" -Destination "$proj\docs\harness\checklists" -Recurse -Force
+**macOS / Linux:**
 
-# Skills (opcional): solo las reales, nunca la plantilla
-New-Item -ItemType Directory -Path "$proj\.opencode\skills" -Force | Out-Null
-Get-ChildItem "$kit\skills" -Directory |
-  Where-Object { $_.Name -notlike '_*' } |
-  ForEach-Object {
-    Copy-Item -LiteralPath $_.FullName -Destination "$proj\.opencode\skills\$($_.Name)" -Recurse -Force
-  }
+```bash
+git clone https://github.com/gmreyescdev/web-design-harness.git
+cd web-design-harness
+bash install.sh /ruta/a/tu-proyecto
 ```
 
 ---
 
-## Flujo
+## Paso 2 — Abrir OpenCode en la carpeta del proyecto
 
-```
-G0 Producto → G1 Alcance → G2 Datos → G3 Diseño → G4 Técnico → G5 Gate → G6 Construcción
+En la carpeta **del proyecto**, no en la del kit. Eso es todo: el agente ya tiene
+`AGENTS.md` y `docs/harness/` para leer.
+
+---
+
+## Paso 3 — Pegar este mensaje
+
+```text
+Inicia el Web Design Harness en modo Express. Hazme la Ronda 1.
 ```
 
-Cada gate cierra con un artefacto escrito y un OK explícito. Los detalles están en `HARNESS.md`.
+El agente lee las reglas, te hace 5 preguntas y escribe el primer `SPEC.md`.
+
+---
+
+## Qué va a pasar
+
+| Ronda | Tema | Resultado |
+|---|---|---|
+| 1 | Producto y usuarios | `SPEC.md` inicial |
+| 2 | Alcance | MVP y no-alcance |
+| 3 | Datos y permisos | `DATA-MODEL.md` |
+| 4 | Diseño | `DESIGN-SYSTEM.md` |
+| 5 | Técnica y riesgos | `ARCHITECTURE.md` |
+| Gate | Revisión | Recién ahí se escribe código |
+
+No necesitás saber de stacks, bases de datos ni diseño para empezar.
+El agente te guía y, si no sabés algo, respondés **"no sé"**.
+
+---
+
+## Si algo falla
+
+| Problema | Solución |
+|---|---|
+| `irm` no funciona | Cloná el repo y ejecutá `.\install.ps1` |
+| No aparece `AGENTS.md` | Abrí OpenCode en la carpeta del proyecto, no en la del kit |
+| El agente empieza a escribir código | Recordale: "No escribas código hasta el gate pre-código" |
+| No sabés una respuesta | Respondé "no sé" y el agente propone un default |
+| Querés empezar de nuevo | Borrá `docs/harness/state/PROJECT-STATE.md` y volvé al Paso 3 |
+
+---
+
+## Instalación manual (avanzado)
+
+```powershell
+git clone https://github.com/gmreyescdev/web-design-harness.git C:\ruta\al\kit
+C:\ruta\al\kit\install.ps1 -Project C:\ruta\a\tu-proyecto
+```
+
+Parámetros:
+
+- `-Project <ruta>`: carpeta destino. Si no existe, la crea.
+- `-Force`: sobrescribe `AGENTS.md` sin preguntar.
 
 ---
 
@@ -77,14 +90,14 @@ Cada gate cierra con un artefacto escrito y un OK explícito. Los detalles está
 
 | Campo | Valor |
 |---|---|
-| Versión | 1.3 |
+| Versión | 1.4 |
 | Gates | 6 (G0–G5 + construcción) |
 | Rondas | 6 |
+| Instalación | `install.ps1` / `install.sh` |
 | Subagentes | solo G6 (`SUBAGENTS.md`) |
 | Coste | reglas en `COST.md` |
-| Skills | política en `SKILLS.md`; plantilla en `skills/_TEMPLATE/` |
+| Skills | política en `SKILLS.md` |
 | Proyecto asociado | ninguno |
-| Listo para copiar | sí |
 
 ---
 
