@@ -21,6 +21,8 @@ artefactos persistidos en archivos y verificación por comandos.
 | `SKILLS.md` | Política de skills: cuándo crearlas, registro, ciclo de vida y prueba. |
 | `KICKOFF.md` | Prompts listos para copiar y arrancar / retomar / cambiar de fase. |
 | `QUESTION-BANK.md` | 6 rondas de preguntas con defaults recomendados. |
+| `CHANGELOG.md` | Historial de versiones del harness. |
+| `ROADMAP.md` | Próximas versiones del kit y cómo contribuir. |
 | `templates/` | Artefactos a completar (SPEC, datos, diseño, arquitectura, aceptación, roadmap). |
 | `skills/` | Plantilla y skills reutilizables (OpenCode: `.opencode/skills/`). |
 | `state/PROJECT-STATE.md` | Tablero vivo: fase, decisiones, supuestos, pendientes, próximo paso. |
@@ -98,6 +100,7 @@ Elige el modo en el primer mensaje. Se puede empezar Express y profundizar despu
 - Una skill nueva debe seguir `SKILLS.md` y estar probada en un proyecto limpio.
 - No incluir datos personales, rutas absolutas ni secretos.
 - Los cambios de protocolo se discuten en un issue antes del PR.
+- El roadmap del kit está en `ROADMAP.md`.
 
 ## Licencia
 
